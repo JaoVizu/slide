@@ -2,32 +2,32 @@ const next = document.querySelector('#next')
 const prev = document.querySelector('#prev')
 
 //Controla a posição dos slides
-let position = 1;
+let position = 0;
 
 /*
   @return [div.item]
 */
 
-const getAllImages = () => [...document.querySelectorAll('.item')]
+const getAllImages = [...document.querySelectorAll('.item')]
 
-const nextImage = (arrImages) => {
-  next.addEventListener('click', () => {
-    if(position !== 0) arrImages[position - 1].classList.remove('active')
-    arrImages[position].classList.add('active')
-    position++
-    positionEqualsZero(position, arrImages.length)
-  })
+const nextImage = () => {
+  console.log(position)
+  if(position === (getAllImages.length - 1)) position = 0
+  getAllImages[position].classList.remove('active')
+  position++;
+  getAllImages[position].classList.add('active')
 }
 
-const prevImage = (arrImages) => {
-  prev.addEventListener('click', () => {
-    console.log(position - 1)
-  })
+const prevImage = () => {
+  getAllImages[position].classList.remove('active')
+  if(position === 0) position = getAllImages.length
+  console.log(position)
+  position--;
+  console.log(position)
+  getAllImages[position].classList.add('active')
+  
+  
 }
 
-const positionEqualsZero = (pos, arrLength) => {
-  if(pos >= arrLength) position = 0
-}
-
-prevImage(getAllImages())
-nextImage(getAllImages())
+next.addEventListener('click', nextImage)
+prev.addEventListener('click', prevImage)
