@@ -7,7 +7,8 @@ let position = 1;
 /*
   @return [div.item]
 */
-const getAllImages = () => Array.from(document.querySelectorAll('.item')).map(img => img)
+
+const getAllImages = () => [...document.querySelectorAll('.item')]
 
 const nextImage = (arrImages) => {
   next.addEventListener('click', () => {
@@ -20,7 +21,7 @@ const nextImage = (arrImages) => {
 
 const prevImage = (arrImages) => {
   prev.addEventListener('click', () => {
-    console.log(position)
+    console.log(position - 1)
   })
 }
 
