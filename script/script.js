@@ -11,12 +11,14 @@ let position = 0;
 const getAllImages = [...document.querySelectorAll('.item')]
 
 const nextImage = () => {
-  if(position === (getAllImages.length - 1)) position = 0
-
-  getAllImages[position].classList.remove('active')
-  position++;
-  getAllImages[position].classList.add('active')
-  
+  if(position === (getAllImages.length - 1)) {
+    position = 0
+    getAllImages[position].classList.add('active')
+  }else{
+    getAllImages[position].classList.remove('active')
+    position++;
+    getAllImages[position].classList.add('active')
+  }
 }
 
 const prevImage = () => {
@@ -24,7 +26,6 @@ const prevImage = () => {
   if(position === 0) position = getAllImages.length
   position--;
   getAllImages[position].classList.add('active')
-  
   
 }
 
